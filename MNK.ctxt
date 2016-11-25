@@ -1,8 +1,19 @@
 #BlueJ class context
-comment0.params=
-comment0.target=MNK()
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ MNK\r\n
-comment1.params=y
-comment1.target=int\ sampleMethod(int)
-comment1.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
-numComments=2
+comment0.params=dimensions
+comment0.target=MNK(int)
+comment1.params=Field
+comment1.target=int\ realPlayerOf(Field)
+comment1.text=\r\n\ This\ Class\ returns\ -1,\ if\ the\ Field\ is\ empty\ and\ the\ player,\ if\ he\ has\ placed\ on\ this\ Field\r\n\ \r\n\ @param\ \ Field\ \ \ The\ Field\ to\ be\ checked\r\n\ @return\ \ \ \ \ -1,\ if\ the\ Field\ is\ empty\ and\ the\ player,\ if\ he\ has\ placed\ on\ this\ Field\r\n
+comment2.params=
+comment2.target=java.util.ArrayList\ getFields()
+comment3.params=
+comment3.target=int\ getPlayer()
+comment4.params=Field
+comment4.target=boolean\ check(Field)
+comment5.params=field
+comment5.target=boolean\ place(Field)
+comment6.params=
+comment6.target=boolean\ checkEnd()
+comment7.params=
+comment7.target=boolean\ checkWin()
+numComments=8
