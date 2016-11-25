@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=coordinates\ player
+comment0.target=Field(java.util.ArrayList,\ int)
+comment1.params=coordinates
+comment1.target=Field(java.util.ArrayList)
+comment2.params=row\ coordinates
+comment2.target=Field(int,\ java.util.ArrayList)
+comment3.params=
+comment3.target=Field()
+comment4.params=dimension
+comment4.target=int\ getCoordinates(int)
+comment5.params=
+comment5.target=java.lang.String\ toString()
+numComments=6
