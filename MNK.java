@@ -37,7 +37,7 @@ public class MNK
     public ArrayList<Field> getFields(){
         return Fields;
     }
-    
+
     public int getPlayer(){
         return(Fields.size()%2);
     }
@@ -75,9 +75,9 @@ public class MNK
             return false;
         }
     }
-    
+
     public boolean checkEnd(){
-        if(!(Fields.size() >= Math.pow(dimensions+1,dimensions))){
+        if((Fields.size() >= Math.pow(dimensions+1,dimensions))){
             return true;
         }
         else if(Fields.size() >= dimensions){
@@ -91,6 +91,8 @@ public class MNK
 
     public boolean checkWin(){
         boolean won = false;
+        if(Fields.size()==0)
+            return false;
         if(!(Fields.size() >= Math.pow(dimensions+1,dimensions))){
             Field lastField = Fields.get(Fields.size()-1);
             int[] P = new int[dimensions];
@@ -147,5 +149,13 @@ public class MNK
         }
         else 
             return true;
+    }
+    
+    public boolean TEMP(int o,int i)
+    {
+        ArrayList<Integer> ar = new ArrayList<Integer>();
+        ar.add(o);
+        ar.add(i);
+        return place(new Field(ar));
     }
 }
