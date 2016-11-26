@@ -80,12 +80,14 @@ public class MC
         int[][] vals = new int[(int)Math.pow(board.getDimensions()+1,board.getDimensions())][3];
         for(int i=0;i<(int)Math.pow(board.getDimensions()+1,board.getDimensions());i++){
             MNK b = new MNK(board);
-            b.place(selectMove(i,board));
-            vals[i] = simulatePlays(board,number);
+            if(!b.place(selectMove(i,board)))
+                break;
+            else
+                vals[i] = simulatePlays(board,number);
         }
         return vals;
     }
-    
+
     /**
      * An example of a method - replace this comment with your own
      * 
@@ -95,12 +97,14 @@ public class MC
     public Field chooseBestMove(MNK board,int number)
     {
         int[][] vals = evaluateMoves(board,number);
-        int max = 0;
+        int max = -10000;
         int maxM= 0;
         for(int i=0;i<(int)Math.pow(board.getDimensions()+1,board.getDimensions());i++){
-            if(vals[i][0] > max){
-                max = vals[i][0];
-                maxM= i;
+            if(board.check(selectMove(i,board))){
+                if(vals[i][2]-vals[i][0] > max){
+                    max = vals[i][0];
+                    maxM= i;
+                }
             }
         }
         return selectMove(maxM,board);

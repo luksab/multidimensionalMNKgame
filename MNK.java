@@ -94,7 +94,7 @@ public class MNK
     }
 
     public boolean place(Field field){
-        if(check(field)/* && !won*/){
+        if(check(field)&&!checkEnd()){
             field.player = Fields.size()%2;
             Fields.add(field);
             return true;
@@ -125,6 +125,16 @@ public class MNK
             return -1;
         }
         return 0;
+    }
+    
+    public boolean Won(int player){
+        if(player == Fields.size()%2 && checkWin()){
+            return true;
+        }
+        else if(player != Fields.size()%2 && checkWin()){
+            return false;
+        }
+        return false;
     }
 
     public boolean checkWin(){
