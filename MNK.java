@@ -7,7 +7,7 @@ import java.util.*;
 public class MNK
 {
     private ArrayList<Field> Fields = new ArrayList<Field>();
-    public int dimensions;
+    private int dimensions;
 
     public MNK(int dimensions)
     {
@@ -38,11 +38,15 @@ public class MNK
         return Fields;
     }
 
+    public int getDimensions(){
+        return dimensions;
+    }
+
     public int getPlayer(){
         return(Fields.size()%2);
     }
 
-    private boolean check(Field Field){
+    public boolean check(Field Field){
         if(Field.dimensions == dimensions && !(Fields.size() >= Math.pow(dimensions+1,dimensions))){
             try{
                 for(int i=0;i<dimensions;i++){
@@ -87,6 +91,19 @@ public class MNK
             else {return false;}
         }
         else{return false;}
+    }
+
+    public int hasWon(int player){
+        if(player == Fields.size()%2 && checkWin()){
+            System.out.println("won");
+            return 1;
+        }
+        else if(player != Fields.size()%2 && checkWin()){
+            System.out.println("lost");
+            return -1;
+        }
+        System.out.println("nothing");
+        return 0;
     }
 
     public boolean checkWin(){
@@ -150,7 +167,7 @@ public class MNK
         else 
             return true;
     }
-    
+
     public boolean TEMP(int o,int i)
     {
         ArrayList<Integer> ar = new ArrayList<Integer>();
