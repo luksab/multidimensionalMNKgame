@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=num
+comment0.target=AIBattle(int)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ AIBattle\r\n
+comment1.params=num
+comment1.target=void\ battleOne(int)
+comment2.params=num
+comment2.target=void\ battle(int)
+comment3.params=
+comment3.target=void\ print()
+numComments=4

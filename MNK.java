@@ -116,23 +116,29 @@ public class MNK
         }
         else{return false;}
     }
+    
+    public void print(){
+        for(int i=0;i<Fields.size();i++){
+            System.out.println(Fields.get(i).toString());
+        }
+    }
 
     public int hasWon(int player){
         if(player == Fields.size()%2 && checkWin()){
-            return 1;
+            return -1;
         }
         else if(player != Fields.size()%2 && checkWin()){
-            return -1;
+            return 1;
         }
         return 0;
     }
     
     public boolean Won(int player){
         if(player == Fields.size()%2 && checkWin()){
-            return true;
+            return false;
         }
         else if(player != Fields.size()%2 && checkWin()){
-            return false;
+            return true;
         }
         return false;
     }
@@ -197,13 +203,5 @@ public class MNK
         }
         else 
             return true;
-    }
-
-    public boolean TEMP(int o,int i)
-    {
-        ArrayList<Integer> ar = new ArrayList<Integer>();
-        ar.add(o);
-        ar.add(i);
-        return place(new Field(ar));
     }
 }

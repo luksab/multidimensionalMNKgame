@@ -23,7 +23,7 @@ public class MC
      */
     public int playRandomly(MNK board)
     {
-        int val = board.hasWon(0);
+        int val = board.hasWon(1);
         ArrayList<Integer> Koord = new ArrayList<Integer>();
         boolean ja = false;
         while(val == 0){
@@ -39,7 +39,7 @@ public class MC
                 ja = board.check(new Field(Koord));
             }
             board.place(new Field(Koord));
-            val = board.hasWon(0);
+            val = board.hasWon(1);
         }
         return val;
     }
@@ -63,8 +63,8 @@ public class MC
         int[] ret = new int[3];
         while(number > 0){
             MNK b = new MNK(board);
-            ret[playRandomly(b)+1] += 1;
-            number -= 1;
+            ret[playRandomly(b)+1] ++;
+            number --;
         }
         return ret;
     }
@@ -101,8 +101,8 @@ public class MC
         int maxM= 0;
         for(int i=0;i<(int)Math.pow(board.getDimensions()+1,board.getDimensions());i++){
             if(board.check(selectMove(i,board))){
-                if(vals[i][2]-vals[i][0] > max){
-                    max = vals[i][0];
+                if(/*vals[i][2]*/-vals[i][0] > max){
+                    max = /*vals[i][2]*/-vals[i][0];
                     maxM= i;
                 }
             }
