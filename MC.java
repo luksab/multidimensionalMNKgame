@@ -8,14 +8,11 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 public class MC
 {
-    private MNK Mnk;
-
     /**
      * Constructor for objects of class MC
      */
     public MC()
     {
-        Mnk = new MNK(2);
     }
 
     /**
@@ -35,12 +32,11 @@ public class MC
             }
             ja = false;
             while(!ja){
-                Koord.clear();
+                Koord = new ArrayList<Integer>();
                 for(int i=0;i<board.getDimensions();i++){
                     Koord.add(ThreadLocalRandom.current().nextInt(0, board.getDimensions()+1));
                 }
                 ja = board.check(new Field(Koord));
-                System.out.println(new Field(Koord).toString());
             }
             board.place(new Field(Koord));
             val = board.hasWon(0);
@@ -62,10 +58,15 @@ public class MC
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public int simulatePlays(int y)
+    public int[] simulatePlays(MNK board,int number)
     {
-        // put your code here
-        return y;
+        int[] ret = new int[3];
+        while(number > 0){
+            MNK b = new MNK(board);
+            ret[playRandomly(b)+1] += 1;
+            number -= 1;
+        }
+        return ret;
     }
 
     /**
@@ -74,9 +75,34 @@ public class MC
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public int evaluateMoves(int y)
+    public int[][] evaluateMoves(MNK board,int number)
     {
-        // put your code here
-        return y;
+        int[][] vals = new int[(int)Math.pow(board.getDimensions()+1,board.getDimensions())][3];
+        for(int i=0;i<(int)Math.pow(board.getDimensions()+1,board.getDimensions());i++){
+            MNK b = new MNK(board);
+            b.place(selectMove(i,board));
+            vals[i] = simulatePlays(board,number);
+        }
+        return vals;
+    }
+    
+    /**
+     * An example of a method - replace this comment with your own
+     * 
+     * @param  y   a sample parameter for a method
+     * @return     the sum of x and y 
+     */
+    public int chooseBestMove(MNK board,int number)
+    {
+        int[][] vals = evaluateMoves(board,number);
+        int max = 0;
+        int maxM= 0;
+        for(int i=0;i<(int)Math.pow(board.getDimensions()+1,board.getDimensions());i++){
+            if(vals[i][0] > max){
+                max = vals[i][0];
+                maxM= i;
+            }
+        }
+        return maxM;
     }
 }

@@ -13,6 +13,12 @@ public class MNK
     {
         this.dimensions = dimensions;
     }
+    
+    public MNK(MNK Mnk)
+    {
+        this.dimensions = Mnk.getDimensions();
+        this.Fields = new ArrayList<Field>(Mnk.getFields());
+    }
 
     /**
      * This Class returns -1, if the Field is empty and the player, if he has placed on this Field
@@ -20,7 +26,25 @@ public class MNK
      * @param  Field   The Field to be checked
      * @return     -1, if the Field is empty and the player, if he has placed on this Field
      */
-    public int realPlayerOf(Field Field){
+    public int realPlayerOf(Field F){
+        for(int i=0;i<Fields.size();i++){
+            int dim = 0;
+            for(int j=0;j<dimensions;j++){
+                if(Fields.get(i).getCoordinates(j) == F.getCoordinates(j))
+                    dim++;
+            }
+            if(dim == dimensions){
+                return Fields.get(i).player;
+            }
+        }
+        return -1;
+    }
+    
+    public int realPlayerOf(int o,int p){
+        ArrayList<Integer> K = new ArrayList<Integer>();
+        K.add(o);
+        K.add(p);
+        Field Field = new Field(K);
         for(int i=0;i<Fields.size();i++){
             int dim = 0;
             for(int j=0;j<dimensions;j++){
@@ -95,14 +119,11 @@ public class MNK
 
     public int hasWon(int player){
         if(player == Fields.size()%2 && checkWin()){
-            System.out.println("won");
             return 1;
         }
         else if(player != Fields.size()%2 && checkWin()){
-            System.out.println("lost");
             return -1;
         }
-        System.out.println("nothing");
         return 0;
     }
 
