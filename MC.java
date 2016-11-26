@@ -92,7 +92,7 @@ public class MC
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public int chooseBestMove(MNK board,int number)
+    public Field chooseBestMove(MNK board,int number)
     {
         int[][] vals = evaluateMoves(board,number);
         int max = 0;
@@ -103,6 +103,6 @@ public class MC
                 maxM= i;
             }
         }
-        return maxM;
+        return selectMove(maxM,board);
     }
 }

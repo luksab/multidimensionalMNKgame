@@ -14,6 +14,6 @@ comment4.params=board\ number
 comment4.target=int[][]\ evaluateMoves(MNK,\ int)
 comment4.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
 comment5.params=board\ number
-comment5.target=int\ chooseBestMove(MNK,\ int)
+comment5.target=Field\ chooseBestMove(MNK,\ int)
 comment5.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
 numComments=6
